@@ -6,6 +6,12 @@ Upon publication, further information can be found at http://opal.csail.mit.edu/
 0. Requirments
     Python 2.7 (this code fails on Python 3)
     Vowpal Wabbit >= 8.3.0
+        Download / extract (https://github.com/JohnLangford/vowpal_wabbit/tags) - `wget https://github.com/JohnLangford/vowpal_wabbit/archive/8.5.0.tar.gz`
+        boost (http://www.boost.org/, mac: `brew install boost --with-python`, linux: `sudo apt-get install libboost-all-dev`)
+        zlib (centos: `sudo apt-get install zlib-devel` (Red Hat/CentOS), ubuntu: 'sudo apt-get install zlib1g-dev`, mac: `xcode-select --install`)
+        lsb-release (centos: redhat-lsb-core)
+        GNU autotools: autoconf, automake, libtool, autoheader, m4, et. al. This is not a strict prereq. On many systems (notably Ubuntu with libboost-program-options-dev installed; mac: brew install automake, etc)
+        automake.sh, make, make install
     scikit-learn (sklearn)
     pandas
     scipy
@@ -17,15 +23,15 @@ Upon publication, further information can be found at http://opal.csail.mit.edu/
 1. Directory structure
 data/: training and testing data should be given a subfolder here
     A1/: a small size example.
-        train/: fasta and tax id for training model, 
+        train/: fasta and tax id for training model,
                 10 fasta records of 10 species.
         test/: short fragments and corresponding tax id for testing model.
     example/: a large size example.
-        train/: fasta and tax id for training model, 
+        train/: fasta and tax id for training model,
                 1564 fasta records (different strains) of huandreds of species.
         test/: fasta and tax id for testing model.
-                Note that it is fasta file of sequence, not short fragments. 
-                We need to first simulated test data by randomly drawing fragments 
+                Note that it is fasta file of sequence, not short fragments.
+                We need to first simulated test data by randomly drawing fragments
                 from these fasta records (see below).
 util/
     ext/: external libararies.
@@ -62,7 +68,7 @@ Modes:
         optional-arguments. (use "./opal.py frag -h" for details)
 
         Outputs these fragments with corresponding taxid into frag_dir.
-        
+
     2) ./opal.py train [--optional-arguments] train_dir model_dir [-h]
 
         Looks for a fasta file in train_dir with matching taxid file.
@@ -108,4 +114,3 @@ Contact
 Acknowledgement
     This implementation of Opal is adapted from the source code of the following paper:
     K. Vervier, P. Mahe, M. Tournoud, J.-B. Veyrieras, and J.-P. Vert. Large-scale Machine Learning for Metagenomics Sequence Classification , Technical report HAL-01151453, May, 2015.
-
